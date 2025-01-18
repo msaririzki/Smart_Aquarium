@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "612535964605",
+    "project_id": "aquarium-78a85",
+    "storage_bucket": "aquarium-78a85.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612535964605:android:8c2a5a984829c08da0b8d4",
+        "android_client_info": {
+          "package_name": "com.example.aquarium_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3HX6DfXeZvUTV8VFrfKzK_bcYtpfeUM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
