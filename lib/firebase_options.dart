@@ -55,6 +55,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '612535964605',
     projectId: 'aquarium-78a85',
     authDomain: 'aquarium-78a85.firebaseapp.com',
+    databaseURL: 'https://aquarium-78a85-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'aquarium-78a85.firebasestorage.app',
   );
 
@@ -63,6 +64,8 @@ class DefaultFirebaseOptions {
     appId: '1:612535964605:android:8c2a5a984829c08da0b8d4',
     messagingSenderId: '612535964605',
     projectId: 'aquarium-78a85',
+    databaseURL: 'https://aquarium-78a85-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'aquarium-78a85.firebasestorage.app',
   );
+
 }
