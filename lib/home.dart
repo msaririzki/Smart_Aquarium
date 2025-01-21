@@ -200,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     RadioListTile<int>(
                       title: Text(
-                        'Rainbow',
+                        'White',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white),
                       ),
