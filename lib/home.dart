@@ -56,7 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     });
     _temperatureStateRef.onValue.listen((event) {
-      final double temperature = event.snapshot.value as double;
+      final dynamic temperatureValue = event.snapshot.value;
+      double temperature;
+      if (temperatureValue is int) {
+        temperature = temperatureValue.toDouble();
+      } else if (temperatureValue is double) {
+        temperature = temperatureValue;
+      } else {
+        // Handle unexpected type
+        temperature = 0.0;
+      }
       setState(() {
         _temperature = '${temperature.toStringAsFixed(1)}°';
       });
@@ -322,90 +331,102 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    height: 20,
+                    child: null,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.white, width: 5),
+                      borderRadius: BorderRadiusDirectional.only(
+                        topStart: Radius.circular(20),
+                        topEnd: Radius.circular(20),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
-            Transform.translate(
-              offset: Offset(0, -40), // Move the container up by 40 pixels
-              child: Expanded(
-                child: Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 30),
-                    child: Column(
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+                child: Column(
+                  children: [
+                    // Add your content here
+                    Row(
                       children: [
-                        // Add your content here
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomCard(
-                                color: Colors.orange,
-                                iconColor: Colors.orange.shade900,
-                                icon: Icons.light_mode,
-                                title: "Lighting",
-                                content: "set",
-                                onPressed: () {
-                                  _showLightingOptions(context);
-                                },
-                              ),
-                            ),
-                            SizedBox(width: 20),
-                            Expanded(
-                              child: CustomCard(
-                                color: Colors.blue,
-                                iconColor: Colors.blue.shade900,
-                                icon: Icons.wind_power,
-                                title: "ESP Fan",
-                                content: _fanContent,
-                                onPressed: _toggleFanState,
-                              ),
-                            ),
-                          ],
+                        Expanded(
+                          child: CustomCard(
+                            color: Colors.orange,
+                            iconColor: Colors.orange.shade900,
+                            icon: Icons.light_mode,
+                            title: "Lighting",
+                            content: "set",
+                            onPressed: () {
+                              _showLightingOptions(context);
+                            },
+                          ),
                         ),
-                        SizedBox(height: 20),
-                        CustomCard(
-                          color: Colors.green.shade300,
-                          iconColor: Colors.green.shade600,
-                          icon: Icons.bubble_chart,
-                          title: "Terakhir diberi: $_lastFeed",
-                          content: "Beri Makan",
-                          width: double.infinity,
-                          onPressed: _sendServoCommand,
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomCard(
-                                color: Colors.pink.shade300,
-                                iconColor: Colors.pink.shade700,
-                                icon: Icons.fire_hydrant_alt,
-                                title: "Pompa 1",
-                                content: _pump1Content,
-                                onPressed: _togglePump1State,
-                              ),
-                            ),
-                            SizedBox(width: 20),
-                            Expanded(
-                              child: CustomCard(
-                                color: Colors.purple.shade300,
-                                iconColor: Colors.purple.shade700,
-                                icon: Icons.fire_hydrant_alt,
-                                title: "Pompa 2",
-                                content: _pump2Content,
-                                onPressed: _togglePump2State,
-                              ),
-                            ),
-                          ],
+                        SizedBox(width: 20),
+                        Expanded(
+                          child: CustomCard(
+                            color: Colors.blue,
+                            iconColor: Colors.blue.shade900,
+                            icon: Icons.wind_power,
+                            title: "ESP Fan",
+                            content: _fanContent,
+                            onPressed: _toggleFanState,
+                          ),
                         ),
                       ],
                     ),
-                  ),
+                    SizedBox(height: 20),
+                    CustomCard(
+                      color: Colors.green.shade300,
+                      iconColor: Colors.green.shade600,
+                      icon: Icons.bubble_chart,
+                      title: "Terakhir diberi: $_lastFeed",
+                      content: "Beri Makan",
+                      width: double.infinity,
+                      onPressed: _sendServoCommand,
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomCard(
+                            color: Colors.pink.shade300,
+                            iconColor: Colors.pink.shade700,
+                            icon: Icons.fire_hydrant_alt,
+                            title: "Pompa 1",
+                            content: _pump1Content,
+                            onPressed: _togglePump1State,
+                          ),
+                        ),
+                        SizedBox(width: 20),
+                        Expanded(
+                          child: CustomCard(
+                            color: Colors.purple.shade300,
+                            iconColor: Colors.purple.shade700,
+                            icon: Icons.fire_hydrant_alt,
+                            title: "Pompa 2",
+                            content: _pump2Content,
+                            onPressed: _togglePump2State,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
