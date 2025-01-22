@@ -99,7 +99,7 @@ class _CustomCardState extends State<CustomCard> {
                 Text(
                   widget.content,
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 38,
                     fontWeight: FontWeight.bold,
                     color: darken(widget.iconColor, 0.2),
                   ),

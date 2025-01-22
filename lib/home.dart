@@ -284,7 +284,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SizedBox(
                   width: double.infinity,
-                  height: 450,
+                  height: 350,
                   child: Image.asset(
                     "assets/background2.jpg",
                     fit: BoxFit.cover,
@@ -293,7 +293,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   color: Colors.black.withOpacity(0.4),
                   width: double.infinity,
-                  height: 450, // Darken filter
+                  height: 350, // Darken filter
                 ),
                 Positioned(
                   left: 0,
